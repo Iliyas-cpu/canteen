@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img1.pnghut.com/22/17/8/Hj40bCgJxv/breaking-bad-company-headgear-vision-care-logo.jpg">
+    <title>Online School Canteen</title>
+    <style>
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Базовые стили для анимации заднего фона */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: backgroundScroll 30s infinite alternate;
+            background-size: cover;
+        }
+
+        @keyframes backgroundScroll {
+            0% { background-image: url('https://w0.peakpx.com/wallpaper/41/726/HD-wallpaper-breaking-bad-basic-breaking-bad-film-logo-serie-series-simple-walter-white.jpg'); }
+            50% { background-image: url('https://wallpapercave.com/wp/wp8112733.jpg'); }
+            100% { background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1f2e3247-62d6-4d91-8b66-596cdde4d62b/dfn34kv-b80f3446-1c0e-4995-b3ed-3d3e9e1c5451.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFmMmUzMjQ3LTYyZDYtNGQ5MS04YjY2LTU5NmNkZGU0ZDYyYlwvZGZuMzRrdi1iODBmMzQ0Ni0xYzBlLTQ5OTUtYjNlZC0zZDNlOWUxYzU0NTEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.7q0EJhfkbaNE5rquRZJdyJYKBP2tcT6SIUd_FRoS9nY'); }
+            
+        }
+        header {
+            height: 15vh;
+            background-image: url("https://www.tvserieguiden.se/wp-content/uploads/2012/10/Breaking-Bad.jpg"); /* Green header */
+            width: 100%;  
+            background-size: cover; /* Изображение растягивается и сохраняет пропорции */
+             /* Центрирование изображения */
+            background-repeat: no-repeat; /* Избегаем повторения изображения */
+            display: flex;
+            color: black;
+            padding: 30px;
+            text-align: left;
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .product {
+            background-color: #ffffff; /* White background for products */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product h3 {
+            color: #1e88e5; /* Blue title */
+        }
+        .product p {
+            font-size: 16px;
+            color: #555;
+        }
+        .product button {
+            background-color: #d32f2f; /* Red button */
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .product button:hover {
+            background-color: #c62828; /* Darker red on hover */
+        }
+        .cart {
+            padding: 20px;
+            text-align: center;
+        }
+        .cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+        .cart-items li {
+            margin: 10px 0;
+        }
+        .submit-order {
+            background-color: #1e88e5; /* Blue order button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .submit-order:hover {
+            background-color: #1565c0; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <header>
+        <h1>Online School Canteen</h1>
+        <h3>Что заказываешь то и получаешь!</h3>
+    </header>
+
+
+<div class="animated-background"></div>
+
+
+    <div class="product-container">
+        <div class="product" data-name="Сэндвич" data-price="500" data-limit="2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKHTEO-62l2W_ua7gb1FMsZujLZjw8quZOyA&s" alt="Сэндвич">
+            <h3>Сэндвич</h3>
+            <p>Цена: 500 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('Сэндвич', 500, 2)">Добавить в корзину</button>
+        </div>
+
+        <div class="product" data-name="Сок" data-price="300" data-limit="2">
+            <img src="juice.jpg" alt="Сок">
+            <h3>Сок</h3>
+            <p>Цена: 300 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('Сок', 300, 2)">Добавить в корзину</button>
+        </div>
+
+        <div class="product" data-name="Ozera" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="Ozera">
+            <h3>Ozera</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('Ozera', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="Шоколад" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="Шоколад">
+            <h3>Шоколад</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('Шоколад', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="Шоколад" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="Шоколад">
+            <h3>Шоколад</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('Шоколад', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="Шоколад" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="Шоколад">
+            <h3>Шоколад</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('Шоколад', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="wh sniggers" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="wh sniggers">
+            <h3>Белий сникрс</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('wh sniggers', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="sniggers" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="sniggers">
+            <h3>Сникрс</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('sniggers', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="twix" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="twix">
+            <h3>Twix</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('twix', 400, 2)">Добавить в корзину</button>
+        </div>
+
+         <div class="product" data-name="bounty" data-price="400" data-limit="2">
+            <img src="chocolate.jpg" alt="bounty">
+            <h3>Bounty</h3>
+            <p>Цена: 400 тг</p>
+            <p>Лимит: 2</p>
+            <button onclick="addToCart('bounty', 400, 2)">Добавить в корзину</button>
+        </div> 
+    </div>
+
+    <div class="cart">
+        <h2>Корзина</h2>
+        <ul class="cart-items"></ul>
+        <p><strong>Общая сумма: <span id="total-price">0</span> тг</strong></p>
+        <button class="submit-order" onclick="submitOrder()">Отправить заказ</button>
+    </div>
+  
+
+
+
+
+
+
+    
+
+
+
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, productPrice, productLimit) {
+            const productCount = cart.filter(item => item.name === productName).length;
+
+            if (productCount < productLimit) {
+                cart.push({ name: productName, price: productPrice });
+                updateCart();
+            } else {
+                alert(`Вы достигли лимита в ${productLimit} для ${productName}.`);
+            }
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.querySelector('.cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            cartItemsElement.innerHTML = '';
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.name + ' - ' + item.price + ' тг';
+                cartItemsElement.appendChild(li);
+                totalPrice += item.price;
+            });
+
+            totalPriceElement.textContent = totalPrice;
+        }
+
+        function submitOrder() {
+            if (cart.length === 0) {
+                alert('Ваша корзина пуста!');
+                return;
+            }
+
+            let orderDetails = cart.map(item => item.name + ' - ' + item.price + ' тг').join(', ');
+            let total = document.getElementById('total-price').textContent;
+
+            let phoneNumber = prompt('Введите свой номер телефона для подтверждения заказа:');
+            if (phoneNumber) {
+                let message = 'Ваш заказ: ' + orderDetails + '. Общая сумма: ' + total + ' тг. Мы напишем вам время, когда заказ будет готов.';
+                alert('Заказ отправлен: ' + message);
+                console.log('Отправка SMS на ' + phoneNumber + ': ' + message);
+
+                cart = [];
+                updateCart();
+            } else {
+                alert('Введите корректный номер телефона.');
+            }
+        }
+    </script>
+    <script>
+    const TELEGRAM_TOKEN = '8097002915:AAHgRnE7Kdh4SjkmQb6eZckGsVMJjTMFkPk'; // Замените на ваш токен
+    const CHAT_ID = '-1002402512035'; // Замените на ваш chat ID
+
+    function submitOrder() {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста!');
+            return;
+        }
+
+        let orderDetails = cart.map(item => item.name + ' - ' + item.price + ' тг').join(', ');
+        let total = document.getElementById('total-price').textContent;
+
+        let phoneNumber = prompt('Введите свой номер телефона для подтверждения заказа:');
+        if (phoneNumber) {
+            let message = `Ваш заказ: ${orderDetails}. Общая сумма: ${total} тг. Номер телефона: ${phoneNumber}.`;
+            sendToTelegram(message);
+        } else {
+            alert('Введите корректный номер телефона.');
+        }
+    }
+
+    function sendToTelegram(message) {
+        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+        const data = {
+            chat_id: CHAT_ID,
+            text: message
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Заказ отправлен в Telegram!');
+                cart = [];
+                updateCart();
+            } else {
+                alert('Ошибка при отправке заказа.');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Ошибка при отправке заказа.');
+        });
+    }
+</script>
+
+</body>
+</html>
