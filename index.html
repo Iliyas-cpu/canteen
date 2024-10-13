@@ -302,63 +302,34 @@
     </div>
 
     <script>
-        let cart = [];
+    let cart = [];
 
-        function addToCart(productName, productPrice, productLimit) {
-            const productCount = cart.filter(item => item.name === productName).length;
+    function addToCart(productName, productPrice, productLimit) {
+        const productCount = cart.filter(item => item.name === productName).length;
 
-            if (productCount < productLimit) {
-                cart.push({ name: productName, price: productPrice });
-                updateCart();
-            } else {
-                alert(`Вы достигли лимита в ${productLimit} для ${productName}.`);
-            }
-        }
-
-        function updateCart() {
-            const cartItemsElement = document.querySelector('.cart-items');
-            const totalPriceElement = document.getElementById('total-price');
-            cartItemsElement.innerHTML = '';
-            let totalPrice = 0;
-
-            cart.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item.name + ' - ' + item.price + ' тг';
-                cartItemsElement.appendChild(li);
-                totalPrice += item.price;
-            });
-
-            totalPriceElement.textContent = totalPrice;
-        }
-
-        function submitOrder() {
-            if (cart.length === 0) {
-                alert('Ваша корзина пуста!');
-                return;
-            }
-
-            let orderDetails = cart.map(item => item.name + ' - ' + item.price + ' тг').join(', ');
-            let total = document.getElementById('total-price').textContent;
-            let phoneNumber = prompt('Введите свой номер телефона для подтверждения заказа:');
-            if (phoneNumber) {
-                let message = `Ваш заказ: ${orderDetails}. Общая сумма: ${total} тг. Номер телефона: ${phoneNumber}.`;
-                alert('Заказ отправлен!');
-                cart = [];
-                updateCart();
-            } else {
-                alert('Введите корректный номер телефона.');
-            }
-        }
-
-        function clearCart() {
-            cart = [];
+        if (productCount < productLimit) {
+            cart.push({ name: productName, price: productPrice });
             updateCart();
-            alert('Корзина очищена.');
+        } else {
+            alert(`Вы достигли лимита в ${productLimit} для ${productName}.`);
         }
-    </script>
-     <script>
-    const TELEGRAM_TOKEN = '7399824413:AAE69RJuJpZet-cHEtpKALmLEV7OUyetZIQ'; // Замените на ваш токен
-    const CHAT_ID = '991940289'; // Замените на ваш chat ID
+    }
+
+    function updateCart() {
+        const cartItemsElement = document.querySelector('.cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+        cartItemsElement.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name} - ${item.price} тг`;
+            cartItemsElement.appendChild(li);
+            totalPrice += item.price;
+        });
+
+        totalPriceElement.textContent = totalPrice;
+    }
 
     function submitOrder() {
         if (cart.length === 0) {
@@ -366,22 +337,33 @@
             return;
         }
 
-        let orderDetails = cart.map(item => item.name + ' - ' + item.price + ' тг').join(', ');
+        let orderDetails = cart.map(item => `${item.name} - ${item.price} тг`).join(', ');
         let total = document.getElementById('total-price').textContent;
-
         let phoneNumber = prompt('Введите свой номер телефона для подтверждения заказа:');
+
         if (phoneNumber) {
-            let message = Ваш заказ: ${orderDetails}. Общая сумма: ${total} тг. Номер телефона: ${phoneNumber}.;
+            let message = `Ваш заказ: ${orderDetails}. Общая сумма: ${total} тг. Номер телефона: ${phoneNumber}.`;
             sendToTelegram(message);
         } else {
             alert('Введите корректный номер телефона.');
         }
     }
 
+    function clearCart() {
+        cart = [];
+        updateCart();
+        alert('Корзина очищена.');
+    }
+</script>
+
+<script>
+    const TELEGRAM_TOKEN = '7399824413:AAE69RJuJpZet-cHEtpKALmLEV7OUyetZIQ'; // Замените на ваш токен
+    const CHAT_ID = '-1002402512035'; // Замените на ваш chat ID
+
     function sendToTelegram(message) {
-        const url = https://api.telegram.org/bot7399824413:AAE69RJuJpZet-cHEtpKALmLEV7OUyetZIQ/sendMessage;
+        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
         const data = {
-            chat_id:991940289,
+            chat_id: CHAT_ID,
             text: message
         };
 
@@ -407,6 +389,8 @@
         });
     }
 </script>
+
+
     <script>
         let ascending = true; // Определяет порядок сортировки
 
