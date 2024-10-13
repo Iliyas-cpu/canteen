@@ -356,6 +356,57 @@
             alert('Корзина очищена.');
         }
     </script>
+     <script>
+    const TELEGRAM_TOKEN = '8097002915:AAHgRnE7Kdh4SjkmQb6eZckGsVMJjTMFkPk'; // Замените на ваш токен
+    const CHAT_ID = '-1002402512035'; // Замените на ваш chat ID
+
+    function submitOrder() {
+        if (cart.length === 0) {
+            alert('Ваша корзина пуста!');
+            return;
+        }
+
+        let orderDetails = cart.map(item => item.name + ' - ' + item.price + ' тг').join(', ');
+        let total = document.getElementById('total-price').textContent;
+
+        let phoneNumber = prompt('Введите свой номер телефона для подтверждения заказа:');
+        if (phoneNumber) {
+            let message = Ваш заказ: ${orderDetails}. Общая сумма: ${total} тг. Номер телефона: ${phoneNumber}.;
+            sendToTelegram(message);
+        } else {
+            alert('Введите корректный номер телефона.');
+        }
+    }
+
+    function sendToTelegram(message) {
+        const url = https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage;
+        const data = {
+            chat_id: CHAT_ID,
+            text: message
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Заказ отправлен в Telegram!');
+                cart = [];
+                updateCart();
+            } else {
+                alert('Ошибка при отправке заказа.');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Ошибка при отправке заказа.');
+        });
+    }
+</script>
     <script>
         let ascending = true; // Определяет порядок сортировки
 
